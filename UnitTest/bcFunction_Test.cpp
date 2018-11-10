@@ -1,4 +1,4 @@
-#include "../includes/bcFunction.hpp"
+#include "../Inc/bcFunction.hpp"
 #include <iostream>
 struct Test
 {
