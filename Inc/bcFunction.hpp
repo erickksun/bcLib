@@ -146,7 +146,7 @@ public:
 
     ~Function()
     {
-		if (m_pFunBase != 0)
+         if (m_pFunBase != 0)
             delete m_pFunBase;
     }
 
@@ -281,7 +281,7 @@ public:                                                                    \
                                                                            \
     ~Function()                                                            \
     {                                                                      \
-	    if (m_pFunBase != 0)                                               \
+        if (m_pFunBase != 0)                                               \
             delete m_pFunBase;                                             \
     }                                                                      \
                                                                            \
@@ -388,3 +388,4 @@ _BC_FUNCTION_IMPLEMENT(20)
 
 
 #endif // _BC_FUNCTION_HPP_
+ 
