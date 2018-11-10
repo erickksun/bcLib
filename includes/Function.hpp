@@ -30,7 +30,7 @@ int main()
 {
     bc::Function<int (int,char)> foo1;
     if (foo1.IsValide())
-    foo1(0,'0');
+        foo1(0,'0');
     foo1 = bc::Function<int (int,char)>::Bind(&foo);
 
     bc::Function<int (int,char)> foo2;
