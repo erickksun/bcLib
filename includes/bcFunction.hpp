@@ -1,5 +1,5 @@
 ﻿/********************************************************
-* Copyright：The key code of this file comes from the Internet and I modified a little. 
+* Copyright：The key code of this file comes from the Internet and I modified a little.
 * Function： realized the std::function, And you can use it in the compiler before C++11
 * Note：Please read the code,and uses it.Just like the DEMO.
 * Author：sun
@@ -7,7 +7,7 @@
 *******************************************************/
 
 /*
-// The number of parameters supported by default is up to 21, 
+// The number of parameters supported by default is up to 21,
 // if it cannot meet your requirements, you can modify it yourself at the end of this document.
 // DEMO
 #include "bcFunction.hpp"
@@ -116,7 +116,7 @@ public:
 
     }
 
-    Function(): m_pFunBase(NULL)
+    Function(): m_pFunBase(0)
     {
 
     }
@@ -129,7 +129,7 @@ public:
 
     bool IsValide ()
     {
-        return m_pFunBase != (FunctionBase0<R>*)(NULL);
+        return m_pFunBase != (FunctionBase0<R>*)(0);
     }
 
     template <typename T>
@@ -146,7 +146,7 @@ public:
 
     ~Function()
     {
-		if (m_pFunBase != NULL)
+		if (m_pFunBase != 0)
             delete m_pFunBase;
     }
 
@@ -251,14 +251,14 @@ public:                                                                    \
                                                                            \
     }                                                                      \
                                                                            \
-    Function(): m_pFunBase(NULL)                                           \
+    Function(): m_pFunBase(0)                                              \
     {                                                                      \
                                                                            \
     }                                                                      \
                                                                            \
     bool IsValide ()                                                       \
     {                                                                      \
-        return m_pFunBase != (FunctionBase_##n<R, _BC_TYPENAME_LIST(n)>*)(NULL);                          \
+        return m_pFunBase != (FunctionBase_##n<R, _BC_TYPENAME_LIST(n)>*)(0);                            \
     }                                                                      \
                                                                            \
     void operator = (FunctionBase_##n<R, _BC_TYPENAME_LIST(n)>* fun)       \
@@ -281,7 +281,7 @@ public:                                                                    \
                                                                            \
     ~Function()                                                            \
     {                                                                      \
-	    if (m_pFunBase != NULL)                                            \
+	    if (m_pFunBase != 0)                                               \
             delete m_pFunBase;                                             \
     }                                                                      \
                                                                            \
