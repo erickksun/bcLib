@@ -1,15 +1,16 @@
 ﻿/********************************************************
-* 注意：该文件代码来源于网络，版权归原作者所有,我只是简单修改
-* 功能：在C++11之前版本的编译器中能够使用C++11中function的基本功能
-* 备注：建议理解代码后使用，否则一不小心写错的话，提示的错误信息可能也是莫名其妙。
-* 整理：sun
-* 时间：2018.11.09
+* Copyright：The key code of this file comes from the Internet and I modified a little. 
+* Function： realized the std::function, And you can use it in the compiler before C++11
+* Note：Please read the code,and uses it.Just like the DEMO.
+* Author：sun
+* Date：2018.11.09
 *******************************************************/
 
 /*
-// 使用样例如下：
-// 支持的参数个数默认最多21个，如果不能满足要求可自行修改（在本文件末尾）
-#include "Function.hpp"
+// The number of parameters supported by default is up to 21, 
+// if it cannot meet your requirements, you can modify it yourself at the end of this document.
+// DEMO
+#include "bcFunction.hpp"
 #include <iostream>
 struct Test
 {
@@ -47,7 +48,7 @@ int main()
 
 namespace bc
 {
-// 定义基类，要利用多态性
+
 template <typename R>
 class FunctionBase0
 {
@@ -56,7 +57,7 @@ public:
     virtual ~FunctionBase0() {}
 };
 
-// 普通函数版本
+
 template <typename R, typename T>
 class Function0 : public FunctionBase0<R>
 {
@@ -75,7 +76,7 @@ private:
     T m_Fun;
 };
 
-// 成员函数版本
+
 template <typename R, typename T>
 class MemberFunction0 : public FunctionBase0<R>
 {
@@ -95,8 +96,6 @@ private:
     R(T::*m_pMemFun)();
 };
 
-
-// 进行统一包装
 template <typename Signature>
 class Function;
 template <typename R>
@@ -296,10 +295,10 @@ private:                                                                   \
 };
 
 /*
-TYPENAME_DECLARE(n) 被定义为 typename T0, typename T1, …, typename Tn
-TYPENAME_LIST(n) 被定义为 T0, T1, …, Tn
-TYPENAME_VARIABLE(n) 被定义为 T0 v0, T1 v1, …, Tn vn
-VARIABLE_LIST(n) 被定义为 v0, v1, …, vn
+TYPENAME_DECLARE(n)  is typename T0, typename T1, …, typename Tn
+TYPENAME_LIST(n)     is T0, T1, …, Tn
+TYPENAME_VARIABLE(n) is T0 v0, T1 v1, …, Tn vn
+VARIABLE_LIST(n)     is v0, v1, …, vn
 */
 #define _BC_REP_0(C, n) C(0)
 #define _BC_REP_1(C, n) _BC_REP_0(C, n) , C(1)
@@ -381,7 +380,7 @@ VARIABLE_LIST(n) 被定义为 v0, v1, …, vn
 
 #define _BC_FUNCTION_IMPLEMENT(n)  _BC_REP2(_BC_FUNCTION_MULTI_PARAM, n)
 
-/*最多21个参数*/
+/*UP TO 21 PARAMETERS*/
 _BC_FUNCTION_IMPLEMENT(20)
 
 
