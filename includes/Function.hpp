@@ -65,17 +65,12 @@ public:
     {
         return m_Fun();
     }
-    T operator = (const T &fun)
-    {
-        m_Fun = fun;
-    }
 public:
     Function0(const T &fun)
         : m_Fun(fun)
     {
 
     }
-
 private:
     T m_Fun;
 };
@@ -95,7 +90,6 @@ public:
     {
 
     }
-
 private:
     T *m_pObj;
     R(T::*m_pMemFun)();
@@ -153,7 +147,8 @@ public:
 
     ~Function()
     {
-        delete m_pFunBase;
+		if (m_pFunBase != NULL)
+            delete m_pFunBase;
     }
 
     R operator ()()
@@ -287,7 +282,8 @@ public:                                                                    \
                                                                            \
     ~Function()                                                            \
     {                                                                      \
-        delete m_pFunBase;                                                 \
+	    if (m_pFunBase != NULL)                                            \
+            delete m_pFunBase;                                             \
     }                                                                      \
                                                                            \
     R operator ()(_BC_TYPENAME_VARIABLE(n))                                \
